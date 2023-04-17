@@ -1,0 +1,17 @@
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'carshop/style.css' %}" />
+
+{% if most_recent_list %}
+<ul>
+  {% for car in most_recent_list %}
+  <li>
+    <a href="{% url 'carshop:detail' car.id %}"
+      >{{ car.car_manufacturer }} - {{car.car_model}}</a
+    >
+  </li>
+  {% endfor %}
+</ul>
+{% else %}
+<p>No cars are available.</p>
+{% endif %}

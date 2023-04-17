@@ -1,0 +1,8 @@
+<h1>{{ car.car_manufacturer }} {{ car.car_model }}</h1>
+<ul>
+  <li>Price: £ {{ car.car_price }}</li>
+  <li>Year: {{ car.car_build_year }}</li>
+  <li>Description: {{ car.car_description }}</li>
+</ul>
+
+<a href="{% url 'carshop:index' %}">Back to main list</a>
