@@ -3,6 +3,11 @@
   <li>Price: £ {{ car.car_price }}</li>
   <li>Year: {{ car.car_build_year }}</li>
   <li>Description: {{ car.car_description }}</li>
+  <li>
+    {% if car.image_one %}
+    <img src="{{ car.image_one.url}}" alt="connect" style="max-height: 300px" />
+    {% endif %}
+  </li>
 </ul>
 
 <a href="{% url 'carshop:index' %}">Back to main list</a>
