@@ -39,3 +39,33 @@
 #mainBannerBox p {
   font-weight: 500;
 }
+
+/* car card  */
+
+#cardLink {
+  text-decoration: none;
+  color: #000;
+}
+
+#cardLink .card {
+  transition: 0.25s;
+}
+
+.card:hover {
+  border: 1px solid #32ba7c;
+  transition: 0.25s;
+}
+
+.card .cardCarImg {
+  transition: 0.25s;
+}
+
+.card:hover .cardCarImg {
+  /* opacity: 0.75; */
+  filter: brightness(66%);
+  transition: 0.25s;
+}
+
+.cardFooterImg {
+  height: 1rem;
+}

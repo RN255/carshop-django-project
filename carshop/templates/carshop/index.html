@@ -10,11 +10,14 @@
     <link rel="stylesheet" href="{% static 'carshop/style.css' %}" />
     {% load bootstrap5 %} {% bootstrap_css %} {% bootstrap_javascript %}
   </head>
+
   <body>
+    <!-- navbar  -->
+
     <header>
       <nav class="navbar navbar-dark bg-dark fixed-top">
         <div class="container-fluid">
-          <a class="navbar-brand" href="#">Cheshire Car Shop</a>
+          <a class="navbar-brand" href="#"> Cheshire Car Shop </a>
           <button
             class="navbar-toggler"
             type="button"
@@ -92,6 +95,7 @@
         </div>
       </nav>
     </header>
+
     <main>
       <!-- {% if most_recent_list %}
       <ul>
@@ -106,6 +110,8 @@
       {% else %}
       <p>No cars are available.</p>
       {% endif %} -->
+
+      <!-- main banner  -->
 
       <div id="mainBanner">
         <div id="mainBannerBox">
@@ -129,45 +135,76 @@
         </div>
       </div>
 
-      <div class="container">
-        <h2 class="py-3">Latest Stock</h2>
-        <div class="row">
+      <!-- car cards  -->
+
+      <div class="container-fluid py-5">
+        <h2 class="py-5">Latest Stock</h2>
+        <div class="row container-fluid mx-auto">
           {% if most_recent_list %} {% for car in most_recent_list %}
-          <div class="col">
-            <div class="card" style="width: 18rem">
-              {% if car.image_one %}
-              <img
-                src="{{ car.image_one.url}}"
-                class="card-img-top"
-                alt="..."
-              />
-              {% endif %}
-              <div class="card-body">
-                <h5 class="card-title text-center">
-                  {{ car.car_build_year }} {{ car.car_manufacturer }}
-                  {{car.car_model }}
-                </h5>
-                <!-- <p class="card-text">
+          <div class="col-12 col-md-6 col-lg-4">
+            <a href="{% url 'carshop:detail' car.id %}" id="cardLink">
+              <div class="card mx-auto mb-5 w-100">
+                {% if car.image_one %}
+                <img
+                  src="{{ car.image_one.url}}"
+                  class="card-img-top cardCarImg"
+                  alt="..."
+                />
+                {% endif %}
+                <div class="card-body pb-0">
+                  <h5 class="card-title text-center">
+                    {{ car.car_build_year }} {{ car.car_manufacturer }}
+                    {{car.car_model }}
+                  </h5>
+                  <!-- <p class="card-text">
                   Some quick example text to build on the card title and make up
                   the bulk of the card's content.
                 </p> -->
+                </div>
+                <ul class="list-group list-group-flush border-0 p-0">
+                  <li class="list-group-item border-0 text-center p-0 m-0">
+                    Our Price
+                  </li>
+                  <li
+                    class="list-group-item border-0 text-center pt-0 pb-4 fw-bold"
+                  >
+                    £{{ car.car_price }}
+                  </li>
+                </ul>
+                <div class="card-body bg-dark d-inline-flex px-auto py-3">
+                  <li
+                    class="list-group-item border-1 bg-dark text-light px-auto mx-auto"
+                  >
+                    <img
+                      src="{% static 'carshop\images\speedometer-32.png' %}  "
+                      alt=""
+                      class="cardFooterImg"
+                    />
+                    {{ car.car_mileage }}
+                  </li>
+                  <li
+                    class="list-group-item border-1 bg-dark text-light px-auto mx-auto"
+                  >
+                    <img
+                      src="{% static 'carshop\images\car-4-32.png' %}  "
+                      alt=""
+                      class="cardFooterImg"
+                    />
+                    {{ car.transmission_type }}
+                  </li>
+                  <li
+                    class="list-group-item border-1 bg-dark text-light px-auto mx-auto"
+                  >
+                    <img
+                      src="{% static 'carshop\images\gas-pump-24.png' %}  "
+                      alt=""
+                      class="cardFooterImg"
+                    />
+                    {{ car.fuel_type }}
+                  </li>
+                </div>
               </div>
-              <ul class="list-group list-group-flush border-0">
-                <li class="list-group-item border-0">Our Price</li>
-                <li class="list-group-item border-0">£{{ car.car_price }}</li>
-              </ul>
-              <div class="card-body bg-dark d-inline-flex px-1 py-3">
-                <li class="list-group-item border-0 bg-dark text-light p-0">
-                  Our Price
-                </li>
-                <li class="list-group-item border-0 bg-dark text-light p-0">
-                  £{{ car.car_price }}
-                </li>
-                <li class="list-group-item border-0 bg-dark text-light p-0">
-                  £{{ car.car_price }}
-                </li>
-              </div>
-            </div>
+            </a>
           </div>
           {% endfor %}{% endif %}
         </div>
