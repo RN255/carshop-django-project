@@ -1,3 +1,41 @@
-main {
-  margin-top: 60px;
+/* Main banner  */
+
+#mainBanner {
+  background-image: url("images/bmwWallpaper.jpg");
+  background-position: center;
+  background-size: cover;
+  height: 75vh;
+  min-height: 500px;
+  position: relative;
+  /* padding-top: calc(60px + 10%); */
+}
+
+#mainBannerBox {
+  padding: 5vh 5vw;
+  background-color: #fff;
+  border-radius: 5px;
+  width: fit-content;
+  position: absolute;
+  top: 50%;
+  right: 10%;
+  transform: translateY(-50%);
+}
+
+#mainBannerBox p:first-of-type {
+  color: rgb(129, 127, 127);
+  font-weight: 500;
+  font-size: 1.5rem;
+}
+
+#mainBannerBox ul {
+  font-weight: 500;
+  list-style: none;
+}
+
+#mainBannerBox ul img {
+  height: 1rem;
+}
+
+#mainBannerBox p {
+  font-weight: 500;
 }

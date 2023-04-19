@@ -52,7 +52,7 @@
                   >
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#">Link</a>
+                  <a class="nav-link" href="#">Cars</a>
                 </li>
                 <li class="nav-item dropdown">
                   <a
@@ -62,23 +62,23 @@
                     data-bs-toggle="dropdown"
                     aria-expanded="false"
                   >
-                    Dropdown
+                    Additional Information
                   </a>
                   <ul class="dropdown-menu dropdown-menu-dark">
-                    <li><a class="dropdown-item" href="#">Action</a></li>
+                    <li><a class="dropdown-item" href="#">Contact</a></li>
                     <li>
-                      <a class="dropdown-item" href="#">Another action</a>
+                      <a class="dropdown-item" href="#">Finance</a>
                     </li>
                     <li>
                       <hr class="dropdown-divider" />
                     </li>
                     <li>
-                      <a class="dropdown-item" href="#">Something else here</a>
+                      <a class="dropdown-item" href="#">Special offers</a>
                     </li>
                   </ul>
                 </li>
               </ul>
-              <form class="d-flex mt-3" role="search">
+              <!-- <form class="d-flex mt-3" role="search">
                 <input
                   class="form-control me-2"
                   type="search"
@@ -86,14 +86,14 @@
                   aria-label="Search"
                 />
                 <button class="btn btn-success" type="submit">Search</button>
-              </form>
+              </form> -->
             </div>
           </div>
         </div>
       </nav>
     </header>
     <main>
-      {% if most_recent_list %}
+      <!-- {% if most_recent_list %}
       <ul>
         {% for car in most_recent_list %}
         <li>
@@ -105,11 +105,32 @@
       </ul>
       {% else %}
       <p>No cars are available.</p>
-      {% endif %}
+      {% endif %} -->
 
-      <h2>Car Cards</h2>
+      <div id="mainBanner">
+        <div id="mainBannerBox">
+          <h2>Approved Used Volkswagens</h2>
+          <p>at Cheshire Car Shop</p>
+          <ul>
+            <li>
+              <img src="{% static 'carshop\images\checked.png' %}  " alt="" />
+              24 months' Warranty
+            </li>
+            <li>
+              <img src="{% static 'carshop\images\checked.png' %}  " alt="" />
+              24 months' Roadside Assistance
+            </li>
+            <li>
+              <img src="{% static 'carshop\images\checked.png' %}  " alt="" />
+              24 months' MOT Cover
+            </li>
+          </ul>
+          <p>...all included in the price of the car!</p>
+        </div>
+      </div>
 
       <div class="container">
+        <h2 class="py-3">Latest Stock</h2>
         <div class="row">
           {% if most_recent_list %} {% for car in most_recent_list %}
           <div class="col">
@@ -122,25 +143,29 @@
               />
               {% endif %}
               <div class="card-body">
-                <h5 class="card-title">
+                <h5 class="card-title text-center">
                   {{ car.car_build_year }} {{ car.car_manufacturer }}
                   {{car.car_model }}
                 </h5>
-                <p class="card-text">
+                <!-- <p class="card-text">
                   Some quick example text to build on the card title and make up
                   the bulk of the card's content.
-                </p>
+                </p> -->
               </div>
-              <ul class="list-group list-group-flush">
-                <li class="list-group-item">Price: £ {{ car.car_price }}</li>
-                <li class="list-group-item">Year: {{ car.car_build_year }}</li>
-                <li class="list-group-item">
-                  Description: {{ car.car_description }}
-                </li>
+              <ul class="list-group list-group-flush border-0">
+                <li class="list-group-item border-0">Our Price</li>
+                <li class="list-group-item border-0">£{{ car.car_price }}</li>
               </ul>
-              <div class="card-body">
-                <a href="#" class="card-link">Card link</a>
-                <a href="#" class="card-link">Another link</a>
+              <div class="card-body bg-dark d-inline-flex px-1 py-3">
+                <li class="list-group-item border-0 bg-dark text-light p-0">
+                  Our Price
+                </li>
+                <li class="list-group-item border-0 bg-dark text-light p-0">
+                  £{{ car.car_price }}
+                </li>
+                <li class="list-group-item border-0 bg-dark text-light p-0">
+                  £{{ car.car_price }}
+                </li>
               </div>
             </div>
           </div>
