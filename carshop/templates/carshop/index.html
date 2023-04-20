@@ -17,7 +17,9 @@
     <header>
       <nav class="navbar navbar-dark bg-dark fixed-top">
         <div class="container-fluid">
-          <a class="navbar-brand" href="#"> Cheshire Car Shop </a>
+          <a class="navbar-brand" href="{% url 'carshop:index' %}">
+            Cheshire Car Shop
+          </a>
           <button
             class="navbar-toggler"
             type="button"
@@ -138,7 +140,7 @@
       <!-- car cards  -->
 
       <div class="container-fluid py-5">
-        <h2 class="py-5">Latest Stock</h2>
+        <h2 class="py-5 ms-5">Latest Stock</h2>
         <div class="row container-fluid mx-auto">
           {% if most_recent_list %} {% for car in most_recent_list %}
           <div class="col-12 col-md-6 col-lg-4">
@@ -173,17 +175,17 @@
                 </ul>
                 <div class="card-body bg-dark d-inline-flex px-auto py-3">
                   <li
-                    class="list-group-item border-1 bg-dark text-light px-auto mx-auto"
+                    class="list-group-item border-0 bg-dark text-light px-0 mx-auto"
                   >
                     <img
                       src="{% static 'carshop\images\speedometer-32.png' %}  "
                       alt=""
                       class="cardFooterImg"
                     />
-                    {{ car.car_mileage }}
+                    {{ car.car_mileage|intcomma }}
                   </li>
                   <li
-                    class="list-group-item border-1 bg-dark text-light px-auto mx-auto"
+                    class="list-group-item bg-dark border-0 text-light px-0 mx-auto"
                   >
                     <img
                       src="{% static 'carshop\images\car-4-32.png' %}  "
@@ -193,7 +195,7 @@
                     {{ car.transmission_type }}
                   </li>
                   <li
-                    class="list-group-item border-1 bg-dark text-light px-auto mx-auto"
+                    class="list-group-item bg-dark border-0 text-light px-0 mx-auto"
                   >
                     <img
                       src="{% static 'carshop\images\gas-pump-24.png' %}  "

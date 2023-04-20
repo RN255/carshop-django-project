@@ -1,39 +1,198 @@
-<head>
-  {% load bootstrap5 %} {% bootstrap_css %} {% bootstrap_javascript %}
-</head>
+{% load static %} {% load humanize %}
 
-<h1>{{ car.car_manufacturer }} {{ car.car_model }}</h1>
-<ul>
-  <li>Price: £ {{ car.car_price }}</li>
-  <li>Year: {{ car.car_build_year }}</li>
-  <li>Description: {{ car.car_description }}</li>
-  <li>
-    {% if car.image_one %}
-    <img src="{{ car.image_one.url}}" alt="connect" style="max-height: 300px" />
-    {% endif %}
-  </li>
-</ul>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'carshop/style.css' %}" />
+    {% load bootstrap5 %} {% bootstrap_css %} {% bootstrap_javascript %}
+  </head>
+  <body>
+    <!-- navbar  -->
 
-<a href="{% url 'carshop:index' %}">Back to main list</a>
+    <header>
+      <nav class="navbar navbar-dark bg-dark fixed-top">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="{% url 'carshop:index' %}">
+            Cheshire Car Shop
+          </a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="offcanvas"
+            data-bs-target="#offcanvasDarkNavbar"
+            aria-controls="offcanvasDarkNavbar"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div
+            class="offcanvas offcanvas-end text-bg-dark"
+            tabindex="-1"
+            id="offcanvasDarkNavbar"
+            aria-labelledby="offcanvasDarkNavbarLabel"
+          >
+            <div class="offcanvas-header bg-dark">
+              <h5
+                class="offcanvas-title text-light"
+                id="offcanvasDarkNavbarLabel"
+              >
+                Menu
+              </h5>
+              <button
+                type="button"
+                class="btn-close btn-close-white"
+                data-bs-dismiss="offcanvas"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="offcanvas-body bg-dark">
+              <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="#"
+                    >Home</a
+                  >
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Cars</a>
+                </li>
+                <li class="nav-item dropdown">
+                  <a
+                    class="nav-link dropdown-toggle"
+                    href="#"
+                    role="button"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                  >
+                    Additional Information
+                  </a>
+                  <ul class="dropdown-menu dropdown-menu-dark">
+                    <li><a class="dropdown-item" href="#">Contact</a></li>
+                    <li>
+                      <a class="dropdown-item" href="#">Finance</a>
+                    </li>
+                    <li>
+                      <hr class="dropdown-divider" />
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="#">Special offers</a>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+              <!-- <form class="d-flex mt-3" role="search">
+                <input
+                  class="form-control me-2"
+                  type="search"
+                  placeholder="Search"
+                  aria-label="Search"
+                />
+                <button class="btn btn-success" type="submit">Search</button>
+              </form> -->
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
 
-<div class="card" style="width: 18rem">
-  {% if car.image_one %}
-  <img src="{{ car.image_one.url}}" class="card-img-top" alt="..." />
-  {% endif %}
-  <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    <p class="card-text">
-      Some quick example text to build on the card title and make up the bulk of
-      the card's content.
-    </p>
-  </div>
-  <ul class="list-group list-group-flush">
-    <li class="list-group-item">Price: £ {{ car.car_price }}</li>
-    <li class="list-group-item">Year: {{ car.car_build_year }}</li>
-    <li class="list-group-item">Description: {{ car.car_description }}</li>
-  </ul>
-  <div class="card-body">
-    <a href="#" class="card-link">Card link</a>
-    <a href="#" class="card-link">Another link</a>
-  </div>
-</div>
+    <main>
+      <div class="container" id="detailContainer">
+        <div class="row">
+          <div class="col-12 col-lg-6 my-auto">
+            {% if car.image_one %}
+            <img src="{{ car.image_one.url}}" class="img-fluid" alt="" />
+            {% endif %}
+          </div>
+          <div class="col my-3">
+            <div id="blueInfoBox">
+              <p>
+                <img
+                  src="{% static 'carshop\images\checked.png' %}  "
+                  alt=""
+                />2 years' unlimited mileage warranty
+              </p>
+              <p>
+                <img
+                  src="{% static 'carshop\images\checked.png' %}  "
+                  alt=""
+                />2 years roadside assistance
+              </p>
+              <p>
+                <img
+                  src="{% static 'carshop\images\checked.png' %}  "
+                  alt=""
+                />2 years' MOT cover
+              </p>
+              <p>
+                <img
+                  src="{% static 'carshop\images\checked.png' %}  "
+                  alt=""
+                />Flexible finance available
+              </p>
+            </div>
+
+            <div class="text-center mt-4">
+              <h2 class="fs-1">
+                {{car.car_build_year}} {{car.car_manufacturer}}
+                {{car.car_model}}
+              </h2>
+              <p class="mb-1">our price</p>
+              <p class="fw-bold">£{{car.car_price|intcomma}}</p>
+              <p>{{car.car_description}}</p>
+            </div>
+
+            <div class="card-body bg-dark d-inline-flex px-auto py-0 w-100 mb-3 rounded">
+              <li
+                class="list-group-item border-0 bg-dark text-light px-0 mx-auto"
+              >
+                <img
+                  src="{% static 'carshop\images\speedometer-32.png' %}  "
+                  alt=""
+                  class="cardFooterImg"
+                />
+                {{ car.car_mileage|intcomma }}
+              </li>
+              <li
+                class="list-group-item bg-dark border-0 text-light px-0 mx-auto"
+              >
+                <img
+                  src="{% static 'carshop\images\car-4-32.png' %}  "
+                  alt=""
+                  class="cardFooterImg"
+                />
+                {{ car.transmission_type }}
+              </li>
+              <li
+                class="list-group-item bg-dark border-0 text-light px-0 mx-auto"
+              >
+                <img
+                  src="{% static 'carshop\images\gas-pump-24.png' %}  "
+                  alt=""
+                  class="cardFooterImg"
+                />
+                {{ car.fuel_type }}
+              </li>
+            </div>
+
+            <div class="text-center">
+              <a class="btn btn-primary border-0" href="#" role="button"
+                >Reserve now</a
+              >
+              <a class="btn btn-primary border-0" href="#" role="button"
+                >Test drive</a
+              >
+              <a class="btn btn-primary border-0" href="#" role="button"
+                >Make enquiry</a
+              >
+            </div>
+          </div>
+        </div>
+        <div class="row mb-5">
+          <a href="{% url 'carshop:index' %}">Return to home page</a>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

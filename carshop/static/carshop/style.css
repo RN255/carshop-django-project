@@ -69,3 +69,51 @@
 .cardFooterImg {
   height: 1rem;
 }
+
+/* detail page  */
+
+#detailContainer {
+  margin-top: calc(60px + 10vh);
+}
+
+#blueInfoBox {
+  background-color: rgb(2, 2, 77);
+  border-radius: 10px;
+  color: #fff;
+  padding: 2% 2% 0%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+#blueInfoBox div {
+  /* display: flex; */
+  /* justify-content: space-around; */
+}
+
+#blueInfoBox div p {
+  margin: 0.1em;
+}
+
+#blueInfoBox img {
+  height: 1em;
+  margin-right: 0.2em;
+}
+
+#detailContainer .btn {
+  background-color: rgb(2, 2, 77);
+  transition: 0.25s;
+}
+
+#detailContainer .btn:hover {
+  opacity: 0.66;
+  transition: 0.25s;
+}
+
+@media only screen and (max-width: 600px) {
+  #mainBannerBox {
+    right: unset;
+    margin: auto;
+    position: relative;
+  }
+}
