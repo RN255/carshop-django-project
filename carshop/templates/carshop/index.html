@@ -1,4 +1,4 @@
-{% load static %}
+{% load static %} {% load humanize %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -168,7 +168,7 @@
                   <li
                     class="list-group-item border-0 text-center pt-0 pb-4 fw-bold"
                   >
-                    £{{ car.car_price }}
+                    £{{ car.car_price|intcomma}}
                   </li>
                 </ul>
                 <div class="card-body bg-dark d-inline-flex px-auto py-3">
